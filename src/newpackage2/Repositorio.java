@@ -58,7 +58,7 @@ public class Repositorio {
             ResultSet resultado = sentenciaP.executeQuery();
 
             while (resultado.next()) {
-                puntajes.add(Puntajes.crear(resultado.getString("Nombre"), resultado.getString("Apellido"), resultado.getInt("Edad"), Integer.parseInt(resultado.getString("Puntaje"))));
+                puntajes.add(Puntajes.crear("Infantil",resultado.getString("Nombre"), resultado.getString("Apellido"), resultado.getInt("Edad"), Integer.parseInt(resultado.getString("Puntaje"))));
 
             }
             String query1 = "SELECT * FROM juvenil;";
@@ -66,7 +66,7 @@ public class Repositorio {
             ResultSet resultado1 = sentenciaP1.executeQuery();
 
             while (resultado1.next()) {
-                puntajes.add(Puntajes.crear(resultado1.getString("Nombre"), resultado1.getString("Apellido"), resultado1.getInt("Edad"), Integer.parseInt(resultado1.getString("Puntaje"))));
+                puntajes.add(Puntajes.crear("Juvenil",resultado1.getString("Nombre"), resultado1.getString("Apellido"), resultado1.getInt("Edad"), Integer.parseInt(resultado1.getString("Puntaje"))));
 
             }
             String query2 = "SELECT * FROM mayores;";
@@ -74,7 +74,7 @@ public class Repositorio {
             ResultSet resultado2 = sentenciaP2.executeQuery();
 
             while (resultado2.next()) {
-                puntajes.add(Puntajes.crear(resultado2.getString("Nombre"), resultado2.getString("Apellido"), resultado2.getInt("Edad"), Integer.parseInt(resultado2.getString("Puntaje"))));
+                puntajes.add(Puntajes.crear("Mayores",resultado2.getString("Nombre"), resultado2.getString("Apellido"), resultado2.getInt("Edad"), Integer.parseInt(resultado2.getString("Puntaje"))));
 
             }
             sentenciaP.close();
@@ -91,12 +91,6 @@ public class Repositorio {
     }
 
 
-   
-
-   
-    
-    
-    
 
     public static ArrayList<Persona> obtenerTodos() {
         ArrayList<Persona> personas = new ArrayList<Persona>();

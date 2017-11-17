@@ -75,7 +75,7 @@ public class PanelRegistro extends javax.swing.JPanel {
                 table_model_personas.removeRow(0);
             }
             for (Puntajes p : lista_puntajes) {
-                String[] data = {p.getNombre(), p.getApellido(),Integer.toString(p.getEdad()),Integer.toString(p.getPuntaje())};
+                String[] data = {p.getCategoria(),p.getNombre(), p.getApellido(),Integer.toString(p.getEdad()),Integer.toString(p.getPuntaje())};
                  table_model_personas.addRow(data);
             }
         

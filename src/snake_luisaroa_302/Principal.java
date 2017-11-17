@@ -52,6 +52,7 @@ public class Principal extends javax.swing.JFrame implements KeyListener{
         jPanel5 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable5 = new javax.swing.JTable();
+        panelJuego11 = new newpackage2.PanelJuego1();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -185,6 +186,7 @@ public class Principal extends javax.swing.JFrame implements KeyListener{
         );
 
         jTabbedPane1.addTab("Mejores Puntajes", jPanel5);
+        jTabbedPane1.addTab("Juego", panelJuego11);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -252,6 +254,7 @@ public class Principal extends javax.swing.JFrame implements KeyListener{
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
+    private newpackage2.PanelJuego1 panelJuego11;
     private newpackage2.PanelRegistro panelRegistro2;
     // End of variables declaration//GEN-END:variables
 public void conf1(){
@@ -297,9 +300,9 @@ public void conf4(){
     table_model_personas.addColumn("Apellido");
     table_model_personas.addColumn("Edad"); 
     table_model_personas.addColumn("Puntaje");
-    jTable5.setModel(table_model_personas);
-   // panelRegistro2.setTableModel(table_model_personas);
-    //panelRegistro2.refreshTableModel4();
+    jTable4.setModel(table_model_personas);
+    panelRegistro2.setTableModel(table_model_personas);
+    panelRegistro2.refreshTableModel4();
 }
 
     @Override
@@ -309,11 +312,11 @@ public void conf4(){
 
     @Override
     public void keyPressed(KeyEvent e) {
-        int key = e.getKeyCode();
+       /* int key = e.getKeyCode();
         if(key == KeyEvent.VK_Q){
             hilo1 =new Contador(panelJuego12,325, 0);
             hilo1.start();
-        }
+        }*/
     }
 
     @Override

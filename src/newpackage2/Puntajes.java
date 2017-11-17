@@ -14,17 +14,24 @@ import java.time.LocalDateTime;
 public class Puntajes {
     private int id = 0,edad,puntaje=0;
     private String  nombre, 
-                    apellido,foto="";
-     public Puntajes(String nombre, String apellido, int edad,int puntaje) {
+                    apellido,foto="",categoria;
+     public Puntajes(String categoria,String nombre, String apellido, int edad,int puntaje) {
         this.nombre = nombre;
         this.apellido = apellido;
        this.edad = edad;
         this.puntaje = puntaje;
+        this.categoria=categoria;
     }  
-    public static Puntajes crear(String nombre, String apellido,  int edad, int puntaje) {
-        return new Puntajes(nombre, apellido, edad,puntaje);
+    public static Puntajes crear(String categoria,String nombre, String apellido,  int edad, int puntaje) {
+        return new Puntajes(categoria,nombre, apellido, edad,puntaje);
     }     
+    public String getCategoria() {
+        return this.categoria;
+    }
 
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
     public int getId() {
         return this.id;
     }
