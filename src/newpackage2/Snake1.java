@@ -113,13 +113,13 @@ public class Snake1 extends javax.swing.JFrame implements KeyListener, Runnable{
          JOptionPane.showMessageDialog(this, "Fin del Juego", "", JOptionPane.INFORMATION_MESSAGE);
             reset();
         }
-        if(puntaje>100&&puntaje<=200){
+        if(puntaje>10&&puntaje<=20){
             if((snake[0].getLocation().x==50  || snake[0].getLocation().x ==250) && (snake[0].getLocation().y>=50&&snake[0].getLocation().y<=230)){
                 JOptionPane.showMessageDialog(this, "Game Over", "", JOptionPane.INFORMATION_MESSAGE);
                 reset();
             }
         }
-        if(puntaje>200&&puntaje<=300){
+        if(puntaje>20&&puntaje<=30){
              if((snake[0].getLocation().y==50 || snake[0].getLocation().y ==230)&&(snake[0].getLocation().x>=110&&snake[0].getLocation().x<=190) ){
                 JOptionPane.showMessageDialog(this, "Game Over", "", JOptionPane.INFORMATION_MESSAGE);
                 reset();
@@ -130,11 +130,11 @@ public class Snake1 extends javax.swing.JFrame implements KeyListener, Runnable{
     
    /*este metodo mueve la culebrita segun el teclado*/
     void avanzar() {
-        if(puntaje<=100){
+        if(puntaje<=10){
             jLabel2.setText("Nivel: 1");
         }else{
-            if(puntaje>=100&&puntaje<=200){//crea los nuevos obstaculos de cada nivel
-                velocidad=50;
+            if(puntaje>=10&&puntaje<=20){
+                
                 panel.add(obstaculo);
                 obstaculo.setBounds(50, 50, 20, 20);
                 panel.add(obstaculo1);
@@ -180,8 +180,8 @@ public class Snake1 extends javax.swing.JFrame implements KeyListener, Runnable{
                 jLabel2.setText("Nivel: 2");
                 
             }else{
-                if(puntaje>=200&&puntaje<=300){
-                    velocidad=40;
+                if(puntaje>=20&&puntaje<=30){
+                    
                     panel.add(obstaculo);
                 obstaculo.setBounds(50, 50, 20, 20);
                 panel.add(obstaculo1);
@@ -245,7 +245,7 @@ public class Snake1 extends javax.swing.JFrame implements KeyListener, Runnable{
                 panel.add(obstaculo30);
                 obstaculo30.setBounds(190, 230, 20, 20);
                 jLabel2.setText("Nivel: 3");
-                velocidad=50;
+               
                 }
             }
         }
@@ -490,7 +490,7 @@ public class Snake1 extends javax.swing.JFrame implements KeyListener, Runnable{
     /*inicia el hilo*/
     @Override
     public void run() {
-        while(puntaje<=300){
+        while(puntaje<=30){
             avanzar();
             try {
                 Thread.sleep(velocidad);

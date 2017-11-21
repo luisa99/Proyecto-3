@@ -15,9 +15,10 @@ public class PanelRegistro extends javax.swing.JPanel {
     DateTimeFormatter formato= DateTimeFormatter.ofPattern("yyyy-MM-d HH:mm");
     DateTimeFormatter formatter_1 = DateTimeFormatter.ofPattern("d-MMM-yyyy");
     private Persona persona;
+    int x=0;
     private DefaultTableModel table_model_personas;
     int edad,documento;
-    String nombre;
+    public static String nombre;
     Snake1 juego1;
     
     public PanelRegistro() {
@@ -38,7 +39,54 @@ public class PanelRegistro extends javax.swing.JPanel {
             for (Persona p : lista_personas) {
                 String[] data = {Integer.toString(p.getId()), Integer.toString(p.getDocumento()),p.getNombre(), p.getApellido(),Integer.toString(p.getEdad()),p.getFecha(),Integer.toString(p.getPuntaje())};
                  table_model_personas.addRow(data);
+                 
             }
+        
+    }
+    public int validar (int documento1){
+        x=0;
+        ArrayList<Persona> lista_personas = Repositorio.obtenerTodos();
+        for (Persona p : lista_personas) {
+                String[] data = {Integer.toString(p.getId()), Integer.toString(p.getDocumento()),p.getNombre(), p.getApellido(),Integer.toString(p.getEdad()),p.getFecha(),Integer.toString(p.getPuntaje())};
+               if(documento1==p.getDocumento()){
+                     Snake1 snake= new Snake1(nombre);
+                     x++;
+                 }
+            }
+        if(x==0){
+            validar1(documento1);
+        }
+        return x;
+    }
+    public int validar1 (int documento1){
+     
+        ArrayList<Persona> lista_personas = Repositorio2.obtenerTodos();
+        for (Persona p : lista_personas) {
+                String[] data = {Integer.toString(p.getId()), Integer.toString(p.getDocumento()),p.getNombre(), p.getApellido(),Integer.toString(p.getEdad()),p.getFecha(),Integer.toString(p.getPuntaje())};
+               if(documento1==p.getDocumento()){
+                     Snake1 snake= new Snake1(nombre);
+                     x++;
+                 } 
+            }
+        if(x==0){
+            validar2(documento1);
+        }
+        return x;
+    }
+        public void validar2 (int documento1){
+        
+        ArrayList<Persona> lista_personas = Repositorio3.obtenerTodos();
+        for (Persona p : lista_personas) {
+                String[] data = {Integer.toString(p.getId()), Integer.toString(p.getDocumento()),p.getNombre(), p.getApellido(),Integer.toString(p.getEdad()),p.getFecha(),Integer.toString(p.getPuntaje())};
+               if(documento1==p.getDocumento()){
+                     Snake1 snake= new Snake1(nombre);
+                     x++;
+                 } 
+            }
+        
+        if(x==0){
+            JOptionPane.showMessageDialog(this, "Usuario no encontrado", "Bien", JOptionPane.INFORMATION_MESSAGE);
+        }
         
     }
      /*actualiza los datos de la base de datos juvenil en la tabla */
@@ -230,22 +278,36 @@ public class PanelRegistro extends javax.swing.JPanel {
                         }else{
                             edad=Integer.parseInt(jTextField4.getText());
                             if(edad>=5&&edad<=15){
-                                persona = Persona.crear(0, Integer.parseInt(jTextField1.getText()), jTextField2.getText(), jTextField3.getText(), Integer.parseInt( jTextField4.getText()),fecha,0);
-                                Repositorio.crear(persona);
-                                JOptionPane.showMessageDialog(this, "Persona creada satisfactoriamente", "Bien", JOptionPane.INFORMATION_MESSAGE);
-                                i++;
+                                if(validar(Integer.parseInt(jTextField1.getText()))==0){
+                                    persona = Persona.crear(0, Integer.parseInt(jTextField1.getText()), jTextField2.getText(), jTextField3.getText(), Integer.parseInt( jTextField4.getText()),fecha,0);
+                                    Repositorio.crear(persona);
+                                    JOptionPane.showMessageDialog(this, "Persona creada satisfactoriamente", "Bien", JOptionPane.INFORMATION_MESSAGE);
+                                    i++;
+                                }else{
+                                    JOptionPane.showMessageDialog(this, "Usuario ya registrado", "Bien", JOptionPane.INFORMATION_MESSAGE);
+                                    i=0;
+                                }
+                                
                             }
                             if(edad>=16&&edad<=24){
-                                persona = Persona.crear(0, Integer.parseInt(jTextField1.getText()), jTextField2.getText(), jTextField3.getText(), Integer.parseInt( jTextField4.getText()),fecha,0);
-                                Repositorio2.crear(persona);
-                                JOptionPane.showMessageDialog(this, "Persona creada satisfactoriamente", "Bien", JOptionPane.INFORMATION_MESSAGE);
-                                i++;
+                                if(validar1(Integer.parseInt(jTextField1.getText()))==0){
+                                    persona = Persona.crear(0, Integer.parseInt(jTextField1.getText()), jTextField2.getText(), jTextField3.getText(), Integer.parseInt( jTextField4.getText()),fecha,0);
+                                    Repositorio2.crear(persona);
+                                    JOptionPane.showMessageDialog(this, "Persona creada satisfactoriamente", "Bien", JOptionPane.INFORMATION_MESSAGE);
+                                    i++;
+                                }else{
+                                    i=0;
+                                    JOptionPane.showMessageDialog(this, "Usuario ya registrado", "Bien", JOptionPane.INFORMATION_MESSAGE);
+                                    
+                                }
                             }
                             if(edad>=25&&edad<=50){
+                                
                                 persona = Persona.crear(0, Integer.parseInt(jTextField1.getText()), jTextField2.getText(), jTextField3.getText(), Integer.parseInt( jTextField4.getText()),fecha,0);
                                 Repositorio3.crear(persona);
                                 JOptionPane.showMessageDialog(this, "Persona creada satisfactoriamente", "Bien", JOptionPane.INFORMATION_MESSAGE);
                                 i++;
+                                
                             }
                             
                              nombre= jTextField2.getText();
