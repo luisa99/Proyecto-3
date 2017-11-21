@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
  * @author PERSONAL
  */
 public class PanelRegistro extends javax.swing.JPanel {
+    //declaracion de variables
     DateTimeFormatter formato= DateTimeFormatter.ofPattern("yyyy-MM-d HH:mm");
     DateTimeFormatter formatter_1 = DateTimeFormatter.ofPattern("d-MMM-yyyy");
     private Persona persona;
@@ -30,7 +31,7 @@ public class PanelRegistro extends javax.swing.JPanel {
     public void setTableModel(DefaultTableModel table_model_personas) {
         this.table_model_personas = table_model_personas;
     }
-    /*actualiza los datos de la base de datos en la tabla*/
+    /*actualiza los datos de la base de datos infantil en la tabla */
     public void refreshTableModel() {
         
             ArrayList<Persona> lista_personas = Repositorio.obtenerTodos();
@@ -44,6 +45,7 @@ public class PanelRegistro extends javax.swing.JPanel {
             }
         
     }
+     /*actualiza los datos de la base de datos juvenil en la tabla */
     public void refreshTableModel2() {
         
             ArrayList<Persona> lista_personas = Repositorio2.obtenerTodos();
@@ -57,6 +59,7 @@ public class PanelRegistro extends javax.swing.JPanel {
             }
         
     }     
+     /*actualiza los datos de la base de datos mayores en la tabla */
     public void refreshTableModel3() {
         
             ArrayList<Persona> lista_personas = Repositorio3.obtenerTodos();
@@ -69,6 +72,7 @@ public class PanelRegistro extends javax.swing.JPanel {
             }
         
     }
+     /*actualiza los datos de la base de datos  en la tabla de historial*/
     public void refreshTableModel4() {
         
             ArrayList<Puntajes> lista_puntajes = Repositorio.obtenerTodos1();
@@ -211,7 +215,7 @@ public class PanelRegistro extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        int i=0;
         try{
-        if (jTextField1.getText().isEmpty() ||
+        if (jTextField1.getText().isEmpty() ||//valida que los campos no esten vacios
             jTextField2.getText().isEmpty() ||
             jTextField3.getText().isEmpty() || 
             jTextField4.getText().isEmpty() ||
@@ -225,7 +229,7 @@ public class PanelRegistro extends javax.swing.JPanel {
                     String fecha=jTextField5.getText()+"-"+jTextField6.getText()+"-"+jTextField7.getText();
                     int dia= Integer.parseInt(jTextField5.getText());
                     int año=Integer.parseInt(jTextField7.getText());
-                    if(dia<1||dia>31){
+                    if(dia<1||dia>31){//validaciones
                         JOptionPane.showMessageDialog(this, "Fecha incorrecta", "Bien", JOptionPane.INFORMATION_MESSAGE);
                     }else{
                         if(año<0){
@@ -266,9 +270,9 @@ public class PanelRegistro extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    //inicia el juego y actualiza el puntaje
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         Snake1 juego=new Snake1();
+         Snake1 juego=new Snake1(jTextField2.getText());
          int puntaje=juego.getPuntaje();
          persona.setPuntaje(puntaje);
          if(persona.getEdad()<=15){
@@ -282,7 +286,7 @@ public class PanelRegistro extends javax.swing.JPanel {
          }
     }//GEN-LAST:event_jButton2ActionPerformed
     
-    
+    //este metodo reinicia los campos de texto del jpanel
     private void resetForm() {
         jTextField1.setText("");
         jTextField2.setText("");

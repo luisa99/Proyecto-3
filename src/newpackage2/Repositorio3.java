@@ -19,7 +19,7 @@ import newpackage1.DBManager;
  */
 public class Repositorio3 {
     private static DBManager database = new DBManager();
-
+//este metodo inserta los datos en la base de datos
     public static void crear (Persona persona) {
         DateTimeFormatter formato1 = DateTimeFormatter.ofPattern("d-MMM-yyyy");
         DateTimeFormatter formato2 = DateTimeFormatter.ofPattern("HH:mm:ss");
@@ -46,6 +46,7 @@ public class Repositorio3 {
         }
 
     }
+     //este metodo edita los datos en la base de datos
     public static void editar (int documento, int puntaje) {
         
         try {
@@ -61,6 +62,7 @@ public class Repositorio3 {
             System.out.println(e.getMessage());
         }
     }
+    //obtiene los datos de la tabla infantil
     public static ArrayList<Persona> obtenerTodos() {
         ArrayList<Persona> personas = new ArrayList<Persona>();
         DateTimeFormatter formato1 = DateTimeFormatter.ofPattern("d-MMM-yyyy");

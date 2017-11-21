@@ -16,8 +16,9 @@ import newpackage2.Snake1;
  *
  * @author PERSONAL
  */
+
 public class Principal extends javax.swing.JFrame {
-    Snake1 obj;
+    //constructor de la clase principal
     public Principal() {
         initComponents();
         conf1();
@@ -252,7 +253,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTable jTable5;
     private newpackage2.PanelRegistro panelRegistro2;
     // End of variables declaration//GEN-END:variables
-public void conf1(){
+//imprime los datos de la tabla infantil
+    public void conf1(){
     DefaultTableModel table_model_personas = new DefaultTableModel();
     table_model_personas.addColumn("Id");
     table_model_personas.addColumn("Documento");
@@ -264,6 +266,7 @@ public void conf1(){
     panelRegistro2.setTableModel(table_model_personas);
     panelRegistro2.refreshTableModel();
 }
+    //imprime los datos de la tabla juvenil
 public void conf2(){
     DefaultTableModel table_model_personas = new DefaultTableModel();
     table_model_personas.addColumn("Id");
@@ -276,6 +279,7 @@ public void conf2(){
     panelRegistro2.setTableModel(table_model_personas);
     panelRegistro2.refreshTableModel2();
 }
+//imprime los datos de la tabla mayores
 public void conf3(){
     DefaultTableModel table_model_personas = new DefaultTableModel();
     table_model_personas.addColumn("Id");
@@ -288,6 +292,7 @@ public void conf3(){
     panelRegistro2.setTableModel(table_model_personas);
     panelRegistro2.refreshTableModel3();
 }
+//imprime los datos de la base de datos juego
 public void conf4(){
     DefaultTableModel table_model_personas = new DefaultTableModel();
     table_model_personas.addColumn("Categoria");

@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
  * @author PERSONAL
  */
 public class Puntajes {
+    //declaracion de las variables globales
     private int id = 0,edad,puntaje=0;
     private String  nombre, 
                     apellido,foto="",categoria;
@@ -22,6 +23,7 @@ public class Puntajes {
         this.puntaje = puntaje;
         this.categoria=categoria;
     }  
+     //crea un nuevo objeto tipo puntajes
     public static Puntajes crear(String categoria,String nombre, String apellido,  int edad, int puntaje) {
         return new Puntajes(categoria,nombre, apellido, edad,puntaje);
     }     

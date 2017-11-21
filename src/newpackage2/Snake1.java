@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package newpackage2;
 
 import java.awt.BasicStroke;
@@ -30,6 +26,7 @@ import javax.swing.JTextArea;
  * @author PERSONAL
  */
 public class Snake1 extends javax.swing.JFrame implements KeyListener, Runnable{
+    //Declaracion de variables
     Graphics2D g2;
     JButton[] snake = new JButton[200];
     JButton obstaculo,obstaculo1,obstaculo2,obstaculo3,obstaculo4,obstaculo5,obstaculo6,obstaculo7,obstaculo16,obstaculo18;
@@ -46,7 +43,7 @@ public class Snake1 extends javax.swing.JFrame implements KeyListener, Runnable{
     Thread hilo1,hilo2,hilo3;
     boolean comida = false, runl = false, runr = true, runu = true, rund = true, banderabonus = true;
     Random r = new Random();
-    
+    //inicializa las variables 
     public void inicializarVariables() {
         gu = 3;
         lbx[0] = 100;
@@ -62,10 +59,9 @@ public class Snake1 extends javax.swing.JFrame implements KeyListener, Runnable{
         rund = true;
         banderabonus = true;
     }
-
-    
+        
+    //crea la culebrita de un tamaño de 3
     public void crearSnake() {
-        // Initially the snake has small length 3
         for (int i = 0; i < 3; i++) {
             snake[i] = new JButton("lb" + i);
             snake[i].setEnabled(false);
@@ -75,6 +71,7 @@ public class Snake1 extends javax.swing.JFrame implements KeyListener, Runnable{
             lby[i + 1] = lby[i];
         }
     }
+    //resetea el juego y vuelve a iniciarlo
     void reset() {
         inicializarVariables();
         panel.removeAll();
@@ -82,7 +79,7 @@ public class Snake1 extends javax.swing.JFrame implements KeyListener, Runnable{
         jLabel1.setText("Puntaje" + puntaje);
         dispose();
     }
-
+    //metodo donde se agrega cola a la culebrita cada vez que coma
     void crecer() {
         snake[gu] = new JButton();
         snake[gu].setEnabled(false);
@@ -97,6 +94,7 @@ public class Snake1 extends javax.swing.JFrame implements KeyListener, Runnable{
 
         gu++;
     }
+    //valida si se choca con el cuerpo por medio de coordenadas
     public void choqueCuerpo(){
         int i=2;
         while(snake[i]!=null){
@@ -109,6 +107,7 @@ public class Snake1 extends javax.swing.JFrame implements KeyListener, Runnable{
             }
         }
     }
+    //este metodo valida si se choca contra las paredes o los obstaculos por medio de coordenadas
     public void choquePared(){
         if(snake[0].getLocation().x<1 || snake[0].getLocation().x >390 || snake[0].getLocation().y<10 || snake[0].getLocation().y>370){
          JOptionPane.showMessageDialog(this, "Fin del Juego", "", JOptionPane.INFORMATION_MESSAGE);
@@ -127,21 +126,14 @@ public class Snake1 extends javax.swing.JFrame implements KeyListener, Runnable{
             }           
         }
     }
-    public void paint() {
-        g2.setStroke(new BasicStroke(15.0f)); 
-        g2.setColor(Color.BLACK);
-        g2.drawLine(50, 50, 50, 100);
-        repaint();
-        removeAll();
-       }
-    // this method contains the logic to move the snake. player will define the derection
-    // this method just forward the snake to the right derection which deriction is pressed
-    // by the player.
+    
+    
+   //este metodo mueve la culebrita segun el teclado
     void avanzar() {
         if(puntaje<=100){
             jLabel2.setText("Nivel: 1");
         }else{
-            if(puntaje>=100&&puntaje<=200){
+            if(puntaje>=100&&puntaje<=200){//crea los nuevos obstaculos de cada nivel
                 velocidad=50;
                 panel.add(obstaculo);
                 obstaculo.setBounds(50, 50, 20, 20);
@@ -258,7 +250,7 @@ public class Snake1 extends javax.swing.JFrame implements KeyListener, Runnable{
         choquePared();
         choqueCuerpo();
         for (int i = 0; i < gu; i++) {
-            lbp[i] = snake[i].getLocation();
+            lbp[i] = snake[i].getLocation();//guarda las posiciones de la culebrita
             
         }
         
@@ -284,7 +276,7 @@ public class Snake1 extends javax.swing.JFrame implements KeyListener, Runnable{
             comida = false;
             puntaje += 5;
             
-            jLabel1.setText("Puntaje "+puntaje);
+            jLabel1.setText("Puntaje "+puntaje);//crea la comidabonus en coordenadas aleatorias
             if (puntaje % 50 == 0 && banderabonus == true) {
                 panel.add(comidabonus);
                 comidabonus.setBounds((10 * r.nextInt(30)), (10 * r.nextInt(30)), 15, 15);
@@ -295,7 +287,7 @@ public class Snake1 extends javax.swing.JFrame implements KeyListener, Runnable{
 
         if (banderabonus == false) {
             if (punto.x <= lbx[0] && punto.y <= lby[0] && punto.x + 10 >= lbx[0] && punto.y + 10 >= lby[0]) {
-                panel.remove(comidabonus);
+                panel.remove(comidabonus);//remueve la comida del panel
                 puntaje += 15;
                
                 jLabel1.setText("Puntaje "+puntaje);
@@ -317,16 +309,15 @@ public class Snake1 extends javax.swing.JFrame implements KeyListener, Runnable{
     /**
      * Creates new form Snake1
      */
-    public Snake1() {
+    public Snake1(String nombre) {
             initComponents();
             inicializarVariables();
-            
+            jLabel3.setText("Nombre: "+nombre);
             jLabel1.setText("Puntaje "+puntaje);
-            // snake have to eat bonousfood to growup
             comidabonus = new JButton();
             obstaculo=new JButton();
             obstaculo1=new JButton();
-            obstaculo2=new JButton();
+            obstaculo2=new JButton();//inicializa las variables y el nuevo hilo
             obstaculo3=new JButton();
             obstaculo4=new JButton();
             obstaculo5=new JButton();
@@ -356,14 +347,14 @@ public class Snake1 extends javax.swing.JFrame implements KeyListener, Runnable{
             obstaculo29=new JButton();
             obstaculo30=new JButton();
             comidabonus.setEnabled(false);
-            // will make first snake
+           
             
             crearSnake();
             show();
             addKeyListener(this);
-            // start thread
+        
             hilo1 = new Thread(this);
-            hilo1.start(); // go to run() method
+            hilo1.start(); 
             
            
         
@@ -384,10 +375,10 @@ public class Snake1 extends javax.swing.JFrame implements KeyListener, Runnable{
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(450, 500));
 
         panel.setBackground(new java.awt.Color(51, 153, 0));
         panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -409,6 +400,8 @@ public class Snake1 extends javax.swing.JFrame implements KeyListener, Runnable{
 
         jLabel2.setText("Nivel:");
 
+        jLabel3.setText("Nombre:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -416,21 +409,21 @@ public class Snake1 extends javax.swing.JFrame implements KeyListener, Runnable{
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(94, 94, 94))
+                .addGap(101, 101, 101))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel2)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -464,32 +457,32 @@ public class Snake1 extends javax.swing.JFrame implements KeyListener, Runnable{
     @Override
     public void keyPressed(KeyEvent e) {
         if (runl == true && e.getKeyCode() == 37) {
-            direccionx = -10; // means snake move right to left by 10pixels
+            direccionx = -10; 
             direcciony = 0;
-            runr = false;     // run right(runr) means snake cant move from left to right
-            runu = true;      // run up   (runu) means snake can move from down to up
-            rund = true;      // run down (run down) means snake can move from up to down
+            runr = false;     
+            runu = true;      
+            rund = true;     
         }
-        // snake move to up when player pressed up arrow
+        // mueve la culebrita hacia arriba
         if (runu == true && e.getKeyCode() == 38) {
             direccionx = 0;
-            direcciony = -10; // means snake move from down to up by 10 pixel
-            rund = false;     // run down (run down) means snake can move from up to down
-            runr = true;      // run right(runr) means snake can move from left to right
-            runl = true;      // run left (runl) means snake can move from right to left
+            direcciony = -10; 
+            rund = false;    
+            runr = true;     
+            runl = true;      
         }
-        // snake move to right when player pressed right arrow
+        // mueve la culebrita hacia la derecha
         if (runr == true && e.getKeyCode() == 39) {
-            direccionx = +10; // means snake move from left to right by 10 pixel
+            direccionx = +10; 
             direcciony = 0;
             runl = false;
             runu = true;
             rund = true;
         }
-        // snake move to down when player pressed down arrow
+        // mueve la culebrita hacia abajo
         if (rund == true && e.getKeyCode() == 40) {
             direccionx = 0;
-            direcciony = +10; // means snake move from left to right by 10 pixel
+            direcciony = +10;
             runu = false;
             runr = true;
             runl = true;
@@ -500,21 +493,23 @@ public class Snake1 extends javax.swing.JFrame implements KeyListener, Runnable{
     public void keyReleased(KeyEvent e) {
         
     }
-
+    //inicia el hilo
     @Override
     public void run() {
-        for(;;){
+        while(puntaje<=300){
             avanzar();
             try {
                 Thread.sleep(velocidad);
             } catch (InterruptedException ie) {
             }
         }
+        JOptionPane.showMessageDialog(this, "Felicidades GANASTE", "", JOptionPane.INFORMATION_MESSAGE);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
