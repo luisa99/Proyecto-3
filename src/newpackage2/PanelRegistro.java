@@ -25,6 +25,7 @@ public class PanelRegistro extends javax.swing.JPanel {
      */
     public PanelRegistro() {
         initComponents();
+        jButton2.setVisible(false);
     }
     public void setTableModel(DefaultTableModel table_model_personas) {
         this.table_model_personas = table_model_personas;
@@ -102,6 +103,7 @@ public class PanelRegistro extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         jLabel1.setText("Documento");
 
@@ -125,6 +127,13 @@ public class PanelRegistro extends javax.swing.JPanel {
         jTextField6.setText("Mes");
 
         jTextField7.setText("Año");
+
+        jButton2.setText("JUGAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -153,11 +162,14 @@ public class PanelRegistro extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton2)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton1)))
@@ -189,7 +201,9 @@ public class PanelRegistro extends javax.swing.JPanel {
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap(81, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -239,6 +253,7 @@ public class PanelRegistro extends javax.swing.JPanel {
                              
                         }
                     }
+                    jButton2.setVisible(true);
                     break;
             }
             if(i>0){
@@ -251,6 +266,21 @@ public class PanelRegistro extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+         Snake1 juego=new Snake1();
+         int puntaje=juego.getPuntaje();
+         persona.setPuntaje(puntaje);
+         if(persona.getEdad()<=15){
+             Repositorio.editar(persona.getDocumento(), puntaje);
+         }
+         if(persona.getEdad()<=25&&persona.getEdad()>=16){
+             Repositorio2.editar(persona.getDocumento(), puntaje);
+         }
+         if(persona.getEdad()>25){
+             Repositorio3.editar(persona.getDocumento(), puntaje);
+         }
+    }//GEN-LAST:event_jButton2ActionPerformed
     
     
     private void resetForm() {
@@ -287,6 +317,7 @@ public class PanelRegistro extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

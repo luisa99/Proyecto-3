@@ -46,6 +46,21 @@ public class Repositorio {
         }
 
     }
+    public static void editar (int documento, int puntaje) {
+        
+        try {
+            String query = "UPDATE infantil SET Puntaje= ? WHERE Documento = ?;";
+            PreparedStatement sentenciaP = database.open().prepareStatement(query);
+            sentenciaP.setString(1, String.valueOf(puntaje));
+            sentenciaP.setString(2, String.valueOf(documento));
+
+            sentenciaP.executeUpdate();
+            sentenciaP.close();
+            database.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
      public static ArrayList<Puntajes> obtenerTodos1() {
         ArrayList<Puntajes> puntajes = new ArrayList<Puntajes>();

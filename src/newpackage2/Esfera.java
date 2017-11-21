@@ -23,6 +23,7 @@ public class Esfera {
         
         return new Ellipse2D.Double(x, y, tama, tama);
         
+        
     }
     public Rectangle2D crearEsfera1() {
         

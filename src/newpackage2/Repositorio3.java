@@ -46,7 +46,21 @@ public class Repositorio3 {
         }
 
     }
+    public static void editar (int documento, int puntaje) {
+        
+        try {
+            String query = "UPDATE mayores SET Puntaje= ? WHERE Documento = ?;";
+            PreparedStatement sentenciaP = database.open().prepareStatement(query);
+            sentenciaP.setString(1, String.valueOf(puntaje));
+            sentenciaP.setString(2, String.valueOf(documento));
 
+            sentenciaP.executeUpdate();
+            sentenciaP.close();
+            database.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
     public static ArrayList<Persona> obtenerTodos() {
         ArrayList<Persona> personas = new ArrayList<Persona>();
         DateTimeFormatter formato1 = DateTimeFormatter.ofPattern("d-MMM-yyyy");

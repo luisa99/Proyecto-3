@@ -14,15 +14,15 @@ import java.util.ArrayList;
  *
  * @author PERSONAL
  */
-public class PanelJuego1 extends javax.swing.JPanel {
+public class PanelJuego extends javax.swing.JPanel {
     int x,y;
     Esfera objEsferaGlobal;
     ArrayList<Esfera> nomArrayList = new ArrayList<Esfera>();
     Graphics2D g2;
     /**
-     * Creates new form PanelJuego1
+     * Creates new form PanelJuego
      */
-    public PanelJuego1() {
+    public PanelJuego() {
         initComponents();
     }
     public void recibirEsfera(Esfera obj){
@@ -46,7 +46,6 @@ public class PanelJuego1 extends javax.swing.JPanel {
             g2.fill(b.crearEsfera1());
             
         }
-        
         repaint();
         removeAll();
     }
@@ -61,9 +60,7 @@ public class PanelJuego1 extends javax.swing.JPanel {
 
         jButton1 = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
-
-        jButton1.setText("Iniciar");
+        jButton1.setText("Jugar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -75,34 +72,35 @@ public class PanelJuego1 extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(169, 169, 169)
+                .addGap(53, 53, 53)
                 .addComponent(jButton1)
-                .addContainerGap(170, Short.MAX_VALUE))
+                .addContainerGap(288, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(118, 118, 118)
+                .addGap(113, 113, 113)
                 .addComponent(jButton1)
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addContainerGap(164, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        jButton1.setVisible(false);
+        // TODO add your handling code here:
         this.paint2();
     }//GEN-LAST:event_jButton1ActionPerformed
-    public void paint2(){
-        g2.setStroke(new BasicStroke(15.0f)); 
-        g2.drawLine (0, 0, 0, 620);
-        g2.setStroke(new BasicStroke(15.0f)); 
-        g2.drawLine (0, 620, 1220, 620);
-        g2.setStroke(new BasicStroke(15.0f)); 
-        g2.drawLine (1220, 620, 1220, 0);
-        g2.setStroke(new BasicStroke(15.0f)); 
-        g2.drawLine (0, 0, 1220, 0);
-    }
 
+    public void paint2(){
+        //jButton1.setVisible(false);
+        g2.setStroke(new BasicStroke(15.0f)); 
+        g2.drawLine (0, 0, 0, 400);
+        g2.setStroke(new BasicStroke(15.0f)); 
+        g2.drawLine (0, 400, 400, 400);
+        g2.setStroke(new BasicStroke(15.0f)); 
+        g2.drawLine (400, 400, 400, 0);
+        g2.setStroke(new BasicStroke(15.0f)); 
+        g2.drawLine (0, 0, 400, 0);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
