@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package newpackage2;
 
 import java.time.LocalDateTime;
@@ -12,13 +8,13 @@ import java.time.LocalDateTime;
  * @author PERSONAL
  */
 public class Persona {
-    //creacion de variables globales
+    /*creacion de variables globales*/
     private int id = 0,edad,documento,puntaje=0;
     private String fecha;
     private LocalDateTime fechas;
     private String  nombre, 
                     apellido,foto="";
-    //constructor de la clase persona 
+    /*constructor de la clase persona */
      public Persona(int id, int documento, String nombre, String apellido, int edad, String fecha, int puntaje) {
         this.id = id;
         this.documento = documento;
@@ -29,11 +25,11 @@ public class Persona {
         this.puntaje = puntaje;
         this.fechas = fechas;
     }  
-    //Crea un objeto tipo persona  
+    /*Crea un objeto tipo persona  */
     public static Persona crear(int id, int documento, String nombre, String apellido,  int edad, String fecha, int puntaje) {
         return new Persona(id, documento, nombre, apellido, edad, fecha, puntaje);
     }          
-//metodos para insertar y obtener informacion de la clase
+/*metodos para insertar y obtener informacion de la clase*/
     public int getId() {
         return this.id;
     }

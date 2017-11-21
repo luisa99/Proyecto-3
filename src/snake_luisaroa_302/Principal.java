@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package snake_luisaroa_302;
 
 import java.awt.event.KeyEvent;
@@ -12,13 +8,10 @@ import newpackage2.Snake1;
 
 
 
-/**
- *
- * @author PERSONAL
- */
+
 
 public class Principal extends javax.swing.JFrame {
-    //constructor de la clase principal
+    /*constructor de la clase principal*/
     public Principal() {
         initComponents();
         conf1();
@@ -199,34 +192,9 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Principal().setVisible(true);
@@ -253,7 +221,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTable jTable5;
     private newpackage2.PanelRegistro panelRegistro2;
     // End of variables declaration//GEN-END:variables
-//imprime los datos de la tabla infantil
+/*imprime los datos de la tabla infantil*/
     public void conf1(){
     DefaultTableModel table_model_personas = new DefaultTableModel();
     table_model_personas.addColumn("Id");
@@ -266,7 +234,7 @@ public class Principal extends javax.swing.JFrame {
     panelRegistro2.setTableModel(table_model_personas);
     panelRegistro2.refreshTableModel();
 }
-    //imprime los datos de la tabla juvenil
+    /*imprime los datos de la tabla juvenil*/
 public void conf2(){
     DefaultTableModel table_model_personas = new DefaultTableModel();
     table_model_personas.addColumn("Id");
@@ -279,7 +247,7 @@ public void conf2(){
     panelRegistro2.setTableModel(table_model_personas);
     panelRegistro2.refreshTableModel2();
 }
-//imprime los datos de la tabla mayores
+/*imprime los datos de la tabla mayores*/
 public void conf3(){
     DefaultTableModel table_model_personas = new DefaultTableModel();
     table_model_personas.addColumn("Id");
@@ -292,7 +260,7 @@ public void conf3(){
     panelRegistro2.setTableModel(table_model_personas);
     panelRegistro2.refreshTableModel3();
 }
-//imprime los datos de la base de datos juego
+/*imprime los datos de la base de datos juego*/
 public void conf4(){
     DefaultTableModel table_model_personas = new DefaultTableModel();
     table_model_personas.addColumn("Categoria");

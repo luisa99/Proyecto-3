@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package newpackage2;
 
 import java.sql.PreparedStatement;
@@ -19,7 +15,7 @@ import newpackage1.DBManager;
  */
 public class Repositorio {
     private static DBManager database = new DBManager();
-//este metodo inserta los datos en la base de datos
+/*este metodo inserta los datos en la base de datos*/
     public static void crear (Persona persona) {
         DateTimeFormatter formato1 = DateTimeFormatter.ofPattern("d-MMM-yyyy");
         DateTimeFormatter formato2 = DateTimeFormatter.ofPattern("HH:mm:ss");
@@ -46,7 +42,7 @@ public class Repositorio {
         }
 
     }
-    //este metodo edita los datos en la base de datos
+    /*este metodo edita los datos en la base de datos*/
     public static void editar (int documento, int puntaje) {
         
         try {
@@ -54,7 +50,6 @@ public class Repositorio {
             PreparedStatement sentenciaP = database.open().prepareStatement(query);
             sentenciaP.setString(1, String.valueOf(puntaje));
             sentenciaP.setString(2, String.valueOf(documento));
-
             sentenciaP.executeUpdate();
             sentenciaP.close();
             database.close();
@@ -62,7 +57,7 @@ public class Repositorio {
             System.out.println(e.getMessage());
         }
     }
-//este metodo obtiene todos los datos de todas las tablas en la base de datos
+/*este metodo obtiene todos los datos de todas las tablas en la base de datos*/
      public static ArrayList<Puntajes> obtenerTodos1() {
         ArrayList<Puntajes> puntajes = new ArrayList<Puntajes>();
         DateTimeFormatter formato1 = DateTimeFormatter.ofPattern("d-MMM-yyyy");
@@ -72,7 +67,6 @@ public class Repositorio {
             String query = "SELECT * FROM infantil;";
             PreparedStatement sentenciaP = database.open().prepareStatement(query);
             ResultSet resultado = sentenciaP.executeQuery();
-
             while (resultado.next()) {
                 puntajes.add(Puntajes.crear("Infantil",resultado.getString("Nombre"), resultado.getString("Apellido"), resultado.getInt("Edad"), Integer.parseInt(resultado.getString("Puntaje"))));
 
@@ -107,7 +101,7 @@ public class Repositorio {
     }
 
 
-//obtiene los datos de la tabla infantil
+/*obtiene los datos de la tabla infantil*/
     public static ArrayList<Persona> obtenerTodos() {
         ArrayList<Persona> personas = new ArrayList<Persona>();
         DateTimeFormatter formato1 = DateTimeFormatter.ofPattern("d-MMM-yyyy");
